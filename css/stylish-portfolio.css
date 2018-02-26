@@ -5,7 +5,7 @@ html {
 }
 
 body {
-  font-family: 'Source Sans Pro';
+  font-family: 'Exo 2', sans-serif;
 }
 
 .btn-xl {
@@ -80,6 +80,7 @@ h6 {
 }
 
 .masthead {
+  color: white;
   min-height: 30rem;
   position: relative;
   display: table;
@@ -106,6 +107,54 @@ h6 {
   .masthead h1 {
     font-size: 5.5rem;
   }
+}
+
+header h1 {
+  display: inline-block;
+}
+
+.one {
+  -webkit-animation-delay: 0;
+}
+
+.two {
+  -webkit-animation-delay: 100ms;
+}
+
+.three {
+  -webkit-animation-delay: 200ms;
+}
+
+.four {
+  -webkit-animation-delay: 300ms;
+}
+
+.five {
+  -webkit-animation-delay: 400ms;
+}
+
+.six {
+  -webkit-animation-delay: 500ms;
+}
+
+.seven {
+  -webkit-animation-delay: 600ms;
+}
+
+.eight {
+  -webkit-animation-delay: 700ms;
+}
+
+.nine {
+  -webkit-animation-delay: 800ms;
+}
+
+.ten {
+  -webkit-animation-delay: 900ms;
+}
+
+.eleven {
+  -webkit-animation-delay: 1000ms;
 }
 
 /* Side Menu */

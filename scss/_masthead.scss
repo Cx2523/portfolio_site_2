@@ -1,4 +1,5 @@
 .masthead {
+  color:white;
   min-height: 30rem;
   position: relative;
   display: table;
@@ -10,7 +11,6 @@
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  color:white;
   h1 {
     font-size: 4rem;
     margin: 0;
@@ -23,3 +23,41 @@
     }
   }
 }
+
+
+header h1{
+  display:inline-block;
+}
+  .one{
+    -webkit-animation-delay:0;
+  }
+  .two{
+    -webkit-animation-delay:100ms;
+  }
+  .three{
+    -webkit-animation-delay:200ms;
+  }
+  .four{
+    -webkit-animation-delay:300ms;
+  }
+  .five{
+    -webkit-animation-delay:400ms;
+  }
+  .six{
+    -webkit-animation-delay:500ms;
+  }
+  .seven{
+    -webkit-animation-delay:600ms;
+  }
+  .eight{
+    -webkit-animation-delay:700ms;
+  }
+  .nine{
+    -webkit-animation-delay:800ms;
+  }
+  .ten{
+    -webkit-animation-delay:900ms;
+  }
+  .eleven{
+    -webkit-animation-delay:1000ms;
+  }
