@@ -63,9 +63,9 @@ var onMapClickHandler = function onMapClickHandler(event) {
   that.on('mouseleave', onMapMouseleaveHandler);
 };
 
-const test = 2;
+var test = 2;
 
-const testFunc = (stuff) => {
+var testFunc = function testFunc(stuff) {
   alert(stuff);
-}
+};
 testFunc(test);

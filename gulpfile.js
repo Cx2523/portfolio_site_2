@@ -6,6 +6,7 @@ var cleanCSS = require('gulp-clean-css');
 var rename = require("gulp-rename");
 var uglify = require('gulp-uglify');
 var pkg = require('./package.json');
+var babel = require('gulp-babel');
 
 // Set the banner content
 var banner = ['/*!\n',
@@ -89,22 +90,35 @@ gulp.task('css:minify', ['css:compile'], function() {
 // CSS
 gulp.task('css', ['css:compile', 'css:minify']);
 
+// babel transpile
+gulp.task('js:babel', function(){
+  return gulp.src([
+      'js/*.js'
+    ])
+    .pipe(babel({
+      presets: ['env']
+    }))
+    .pipe(rename({suffix:'.transpiled'}))
+    .pipe(gulp.dest('js'))
+
+})
+
 // Minify JavaScript
 gulp.task('js:minify', function() {
   return gulp.src([
       './js/*.js',
       '!./js/*.min.js'
     ])
-    .pipe(uglify())
-    .pipe(rename({
-      suffix: '.min'
-    }))
-    .pipe(gulp.dest('./js'))
+    // .pipe(uglify())
+    // .pipe(rename({
+    //   suffix: '.min'
+    // }))
+    // .pipe(gulp.dest('./js'))
     .pipe(browserSync.stream());
 });
 
 // JS
-gulp.task('js', ['js:minify']);
+gulp.task('js', ['js:babel','js:minify']);
 
 // Default task
 gulp.task('default', ['css', 'js', 'vendor']);
