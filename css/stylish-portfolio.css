@@ -109,8 +109,10 @@ h6 {
   }
 }
 
-header div {
+.dropInLetter div {
+  font-style: italic;
   display: inline-block;
+  font-weight: normal;
 }
 
 .one {
