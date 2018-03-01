@@ -2,6 +2,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import BubbleChart from './BubbleChart.js';
+import BubbleChartjs from './ChartJsBubbleChart.js';
 
 (function ($) {
   "use strict"; // Start of use strict
@@ -66,39 +67,44 @@ var onMapClickHandler = function onMapClickHandler(event) {
   that.on('mouseleave', onMapMouseleaveHandler);
 };
 
-const skillData = [
-  {
-    name: "Javascript",
-    value:9
-  },
-  {
-    name: "C#",
-    value:7
-  },
-  {
-    name: ".Net",
-    value:7
-  },
-  {
-    name: "React",
-    value:6
-  },
-  {
-    name: "Angular",
-    value:4
-  },
-  {
-    name: "SQL",
-    value:5
-  },
-  {
-    name: "SQL Server",
-    value:2
-  },
-  {
-    name: "Node",
-    value:5
-  }
-];
+// const skillData = [
+//   {
+//     name: "Javascript",
+//     value:9
+//   },
+//   {
+//     name: "C#",
+//     value:7
+//   },
+//   {
+//     name: ".Net",
+//     value:7
+//   },
+//   {
+//     name: "React",
+//     value:6
+//   },
+//   {
+//     name: "Angular",
+//     value:4
+//   },
+//   {
+//     name: "SQL",
+//     value:5
+//   },
+//   {
+//     name: "SQL Server",
+//     value:2
+//   },
+//   {
+//     name: "Node",
+//     value:5
+//   }
+// ];
+//
+// render(<BubbleChart skills={skillData} />, document.getElementById('react-node'));
 
-render(<BubbleChart skills={skillData} />, document.getElementById('react-node'));
+var ctx1 = document.getElementById("myChart");
+BubbleChartjs(ctx1);
+var ctx2 = document.getElementById("myChart2");
+BubbleChartjs(ctx2);
