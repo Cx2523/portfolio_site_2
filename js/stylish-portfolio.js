@@ -1,4 +1,9 @@
 "use strict";
+import React from 'react';
+import { render } from 'react-dom';
+import Test from './TestComponent.js';
+
+console.log(Test);
 
 (function ($) {
   "use strict"; // Start of use strict
@@ -69,3 +74,5 @@ const testFunc = (stuff) => {
   alert(stuff);
 }
 testFunc(test);
+
+render(<Test />, document.getElementById('react-node'));

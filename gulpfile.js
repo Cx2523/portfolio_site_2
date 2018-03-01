@@ -6,8 +6,9 @@ var cleanCSS = require('gulp-clean-css');
 var rename = require("gulp-rename");
 var uglify = require('gulp-uglify');
 var pkg = require('./package.json');
-var babel = require('gulp-babel');
-
+var source = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
+var browserify = require('browserify');
 // Set the banner content
 var banner = ['/*!\n',
   ' * Start Bootstrap - <%= pkg.title %> v<%= pkg.version %> (<%= pkg.homepage %>)\n',
@@ -92,33 +93,21 @@ gulp.task('css', ['css:compile', 'css:minify']);
 
 // babel transpile
 gulp.task('js:babel', function(){
-  return gulp.src([
-      'js/*.js'
-    ])
-    .pipe(babel({
-      presets: ['env']
-    }))
-    .pipe(rename({suffix:'.transpiled'}))
-    .pipe(gulp.dest('js'))
+  var bundler = browserify('js/stylish-portfolio.js');
 
+  return bundler
+    .transform('babelify' , {
+      presets: ['env', 'react']
+    })
+    .bundle()
+    .pipe(source('app.js'))
+    .pipe(buffer())
+    .pipe(gulp.dest('dist'))
+    .pipe(browserSync.stream());
 })
 
-// Minify JavaScript
-gulp.task('js:minify', function() {
-  return gulp.src([
-      './js/*.js',
-      '!./js/*.min.js'
-    ])
-    // .pipe(uglify())
-    // .pipe(rename({
-    //   suffix: '.min'
-    // }))
-    // .pipe(gulp.dest('./js'))
-    .pipe(browserSync.stream());
-});
-
 // JS
-gulp.task('js', ['js:babel','js:minify']);
+gulp.task('js', ['js:babel']);
 
 // Default task
 gulp.task('default', ['css', 'js', 'vendor']);
