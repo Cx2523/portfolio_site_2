@@ -1,9 +1,7 @@
 "use strict";
 import React from 'react';
 import { render } from 'react-dom';
-import Test from './TestComponent.js';
-
-console.log(Test);
+import BubbleChart from './BubbleChart.js';
 
 (function ($) {
   "use strict"; // Start of use strict
@@ -68,11 +66,39 @@ var onMapClickHandler = function onMapClickHandler(event) {
   that.on('mouseleave', onMapMouseleaveHandler);
 };
 
-const test = 2;
+const skillData = [
+  {
+    name: "Javascript",
+    value:9
+  },
+  {
+    name: "C#",
+    value:7
+  },
+  {
+    name: ".Net",
+    value:7
+  },
+  {
+    name: "React",
+    value:6
+  },
+  {
+    name: "Angular",
+    value:4
+  },
+  {
+    name: "SQL",
+    value:5
+  },
+  {
+    name: "SQL Server",
+    value:2
+  },
+  {
+    name: "Node",
+    value:5
+  }
+];
 
-const testFunc = (stuff) => {
-  alert(stuff);
-}
-testFunc(test);
-
-render(<Test />, document.getElementById('react-node'));
+render(<BubbleChart skills={skillData} />, document.getElementById('react-node'));
