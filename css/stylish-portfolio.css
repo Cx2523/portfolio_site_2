@@ -120,43 +120,76 @@ h6 {
 }
 
 .two {
-  -webkit-animation-delay: 100ms;
+  -webkit-animation-delay: 50ms;
 }
 
 .three {
-  -webkit-animation-delay: 200ms;
+  -webkit-animation-delay: 100ms;
 }
 
 .four {
-  -webkit-animation-delay: 300ms;
+  -webkit-animation-delay: 150ms;
 }
 
 .five {
-  -webkit-animation-delay: 400ms;
+  -webkit-animation-delay: 200ms;
 }
 
 .six {
-  -webkit-animation-delay: 500ms;
+  -webkit-animation-delay: 250ms;
 }
 
 .seven {
-  -webkit-animation-delay: 600ms;
+  -webkit-animation-delay: 300ms;
 }
 
 .eight {
-  -webkit-animation-delay: 700ms;
+  -webkit-animation-delay: 350ms;
 }
 
 .nine {
-  -webkit-animation-delay: 800ms;
+  -webkit-animation-delay: 400ms;
 }
 
 .ten {
-  -webkit-animation-delay: 900ms;
+  -webkit-animation-delay: 450ms;
 }
 
 .eleven {
-  -webkit-animation-delay: 1000ms;
+  -webkit-animation-delay: 500ms;
+}
+
+
+.twelve {
+  -webkit-animation-delay: 550ms;
+}
+
+.thirteen {
+  -webkit-animation-delay: 600ms;
+}
+
+.fourteen {
+  -webkit-animation-delay: 650ms;
+}
+
+.fifteen {
+  -webkit-animation-delay: 700ms;
+}
+
+.sixteen {
+  -webkit-animation-delay: 750ms;
+}
+
+.seventeen {
+  -webkit-animation-delay: 800ms;
+}
+
+.eightteen {
+  -webkit-animation-delay: 850ms;
+}
+
+.nineteen {
+  -webkit-animation-delay: 900ms;
 }
 
 /* Side Menu */

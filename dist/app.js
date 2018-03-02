@@ -1,82 +1,11 @@
 (function(){function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s}return e})()({1:[function(require,module,exports){
-// import React from 'react';
-// import * as d3 from 'd3';
-//
-// class BubbleChart extends React.Component{
-//     constructor(){
-//       super();
-//       this.createBubbleChart = this.createBubbleChart.bind(this);
-//     }
-//
-//     componentDidMount(){
-//       this.createBubbleChart();
-//     }
-//
-//     getSvgDimensions(){
-//
-//       let heightString = d3.select(this.node).style('height');
-//
-//       let height = parseInt(heightString.substr(0, heightString.length - 2));
-//       let widthString = d3.select(this.node).style('width');
-//       let width = parseInt(widthString.substr(0, widthString.length - 2));
-//       return {
-//         width,
-//         height
-//       }
-//     }
-//
-//     createBubbleChart(){
-//
-//       let maxDiameter = this.getSvgDimensions().height;
-//
-//       let color = d3.scaleOrdinal(d3.schemeCategory20);
-//
-//       let hierarchy = d3.hierarchy({children: this.props.skills});
-//       hierarchy.sum(d => d.value);
-//       let bubbleLayout = d3.pack()
-//         .size([maxDiameter, maxDiameter])
-//         .padding(1.5);
-//
-//       let bubbleNodes = bubbleLayout(hierarchy);
-//
-//       d3.select(this.node).attr("class", "bubbleLayout");
-//
-//       let bubbles = d3.select(this.node).append("g")
-//         .selectAll(".bubbleLayout")
-//         .data(bubbleNodes.children)
-//         .enter();
-//
-//       bubbles.append("circle")
-//         .attr('r', d => d.r)
-//         .attr('transform', d => `translate(${d.x},${d.y})`)
-//         .attr('fill', d => color(d.r));
-//
-//       bubbles.append("text")
-//         .attr('transform', d => `translate(${d.x},${d.y})`)
-//         .attr('fill', 'black')
-//         .attr('text-anchor', 'middle')
-//         .text(d => d.data.name);
-//
-//     }
-//
-//     render(){
-//       return (
-//         <div className="chart-container">
-//           <svg ref={node => this.node = node}></svg>
-//         </div>
-//       );
-//   }
-// }
-//
-// export default BubbleChart;
-"use strict";
-
-},{}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.PolarChart1js = PolarChart1js;
+exports.PolarChart2js = PolarChart2js;
 
 var _chart = require('chart.js');
 
@@ -84,14 +13,15 @@ var _chart2 = _interopRequireDefault(_chart);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function BubbleChartjs(ctx) {
+function PolarChart1js(ctx) {
   var data = {
     datasets: [{
-      data: [10, 20, 30]
+      data: [10, 20, 30, 40, 50],
+      backgroundColor: ['Red', 'Blue', 'Green', 'Purple', 'Yellow']
     }],
 
     // These labels appear in the legend and in the tooltips when hovering different arcs
-    labels: ['Red', 'Yellow', 'Blue']
+    labels: ['TypeScript', 'ASP.Net', 'Node.js', 'React', 'JavaScript']
   };
 
   return new _chart2.default(ctx, {
@@ -100,9 +30,24 @@ function BubbleChartjs(ctx) {
   });
 }
 
-exports.default = BubbleChartjs;
+function PolarChart2js(ctx) {
+  var data = {
+    datasets: [{
+      data: [50, 40, 30, 20, 10],
+      backgroundColor: ['#1D809F', '#868e96', '#495057', '#343a40', '#212529']
+    }],
 
-},{"chart.js":4}],3:[function(require,module,exports){
+    // These labels appear in the legend and in the tooltips when hovering different arcs
+    labels: ['TypeScript', 'ASP.Net', 'Node.js', 'React', 'JavaScript']
+  };
+
+  return new _chart2.default(ctx, {
+    data: data,
+    type: 'polarArea'
+  });
+}
+
+},{"chart.js":3}],2:[function(require,module,exports){
 "use strict";
 
 var _react = require('react');
@@ -111,13 +56,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactDom = require('react-dom');
 
-var _BubbleChart = require('./BubbleChart.js');
-
-var _BubbleChart2 = _interopRequireDefault(_BubbleChart);
-
-var _ChartJsBubbleChart = require('./ChartJsBubbleChart.js');
-
-var _ChartJsBubbleChart2 = _interopRequireDefault(_ChartJsBubbleChart);
+var _ChartJsPolarCharts = require('./ChartJsPolarCharts');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -184,49 +123,13 @@ var onMapClickHandler = function onMapClickHandler(event) {
   that.on('mouseleave', onMapMouseleaveHandler);
 };
 
-// const skillData = [
-//   {
-//     name: "Javascript",
-//     value:9
-//   },
-//   {
-//     name: "C#",
-//     value:7
-//   },
-//   {
-//     name: ".Net",
-//     value:7
-//   },
-//   {
-//     name: "React",
-//     value:6
-//   },
-//   {
-//     name: "Angular",
-//     value:4
-//   },
-//   {
-//     name: "SQL",
-//     value:5
-//   },
-//   {
-//     name: "SQL Server",
-//     value:2
-//   },
-//   {
-//     name: "Node",
-//     value:5
-//   }
-// ];
-//
-// render(<BubbleChart skills={skillData} />, document.getElementById('react-node'));
-
 var ctx1 = document.getElementById("myChart");
-(0, _ChartJsBubbleChart2.default)(ctx1);
+(0, _ChartJsPolarCharts.PolarChart1js)(ctx1);
+console.log(_ChartJsPolarCharts.PolarChart2js);
 var ctx2 = document.getElementById("myChart2");
-(0, _ChartJsBubbleChart2.default)(ctx2);
+(0, _ChartJsPolarCharts.PolarChart2js)(ctx2);
 
-},{"./BubbleChart.js":1,"./ChartJsBubbleChart.js":2,"react":86,"react-dom":83}],4:[function(require,module,exports){
+},{"./ChartJsPolarCharts":1,"react":85,"react-dom":82}],3:[function(require,module,exports){
 /**
  * @namespace Chart
  */
@@ -306,7 +209,7 @@ if (typeof window !== 'undefined') {
  */
 Chart.canvasHelpers = Chart.helpers.canvas;
 
-},{"./charts/Chart.Bar":5,"./charts/Chart.Bubble":6,"./charts/Chart.Doughnut":7,"./charts/Chart.Line":8,"./charts/Chart.PolarArea":9,"./charts/Chart.Radar":10,"./charts/Chart.Scatter":11,"./controllers/controller.bar":12,"./controllers/controller.bubble":13,"./controllers/controller.doughnut":14,"./controllers/controller.line":15,"./controllers/controller.polarArea":16,"./controllers/controller.radar":17,"./controllers/controller.scatter":18,"./core/core":26,"./core/core.animation":19,"./core/core.controller":20,"./core/core.datasetController":21,"./core/core.defaults":22,"./core/core.element":23,"./core/core.helpers":24,"./core/core.interaction":25,"./core/core.layoutService":27,"./core/core.plugin":28,"./core/core.scale":29,"./core/core.scaleService":30,"./core/core.tooltip":32,"./elements/index":37,"./helpers/index":42,"./platforms/platform":45,"./plugins/plugin.filler":46,"./plugins/plugin.legend":47,"./plugins/plugin.title":48,"./scales/scale.category":49,"./scales/scale.linear":50,"./scales/scale.linearbase":51,"./scales/scale.logarithmic":52,"./scales/scale.radialLinear":53,"./scales/scale.time":54}],5:[function(require,module,exports){
+},{"./charts/Chart.Bar":4,"./charts/Chart.Bubble":5,"./charts/Chart.Doughnut":6,"./charts/Chart.Line":7,"./charts/Chart.PolarArea":8,"./charts/Chart.Radar":9,"./charts/Chart.Scatter":10,"./controllers/controller.bar":11,"./controllers/controller.bubble":12,"./controllers/controller.doughnut":13,"./controllers/controller.line":14,"./controllers/controller.polarArea":15,"./controllers/controller.radar":16,"./controllers/controller.scatter":17,"./core/core":25,"./core/core.animation":18,"./core/core.controller":19,"./core/core.datasetController":20,"./core/core.defaults":21,"./core/core.element":22,"./core/core.helpers":23,"./core/core.interaction":24,"./core/core.layoutService":26,"./core/core.plugin":27,"./core/core.scale":28,"./core/core.scaleService":29,"./core/core.tooltip":31,"./elements/index":36,"./helpers/index":41,"./platforms/platform":44,"./plugins/plugin.filler":45,"./plugins/plugin.legend":46,"./plugins/plugin.title":47,"./scales/scale.category":48,"./scales/scale.linear":49,"./scales/scale.linearbase":50,"./scales/scale.logarithmic":51,"./scales/scale.radialLinear":52,"./scales/scale.time":53}],4:[function(require,module,exports){
 'use strict';
 
 module.exports = function(Chart) {
@@ -319,7 +222,7 @@ module.exports = function(Chart) {
 
 };
 
-},{}],6:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 'use strict';
 
 module.exports = function(Chart) {
@@ -331,7 +234,7 @@ module.exports = function(Chart) {
 
 };
 
-},{}],7:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 'use strict';
 
 module.exports = function(Chart) {
@@ -344,7 +247,7 @@ module.exports = function(Chart) {
 
 };
 
-},{}],8:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 'use strict';
 
 module.exports = function(Chart) {
@@ -357,7 +260,7 @@ module.exports = function(Chart) {
 
 };
 
-},{}],9:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 'use strict';
 
 module.exports = function(Chart) {
@@ -370,7 +273,7 @@ module.exports = function(Chart) {
 
 };
 
-},{}],10:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 'use strict';
 
 module.exports = function(Chart) {
@@ -383,7 +286,7 @@ module.exports = function(Chart) {
 
 };
 
-},{}],11:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 'use strict';
 
 module.exports = function(Chart) {
@@ -393,7 +296,7 @@ module.exports = function(Chart) {
 	};
 };
 
-},{}],12:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 'use strict';
 
 var defaults = require('../core/core.defaults');
@@ -816,7 +719,7 @@ module.exports = function(Chart) {
 	});
 };
 
-},{"../core/core.defaults":22,"../elements/index":37,"../helpers/index":42}],13:[function(require,module,exports){
+},{"../core/core.defaults":21,"../elements/index":36,"../helpers/index":41}],12:[function(require,module,exports){
 'use strict';
 
 var defaults = require('../core/core.defaults');
@@ -998,7 +901,7 @@ module.exports = function(Chart) {
 	});
 };
 
-},{"../core/core.defaults":22,"../elements/index":37,"../helpers/index":42}],14:[function(require,module,exports){
+},{"../core/core.defaults":21,"../elements/index":36,"../helpers/index":41}],13:[function(require,module,exports){
 'use strict';
 
 var defaults = require('../core/core.defaults');
@@ -1299,7 +1202,7 @@ module.exports = function(Chart) {
 	});
 };
 
-},{"../core/core.defaults":22,"../elements/index":37,"../helpers/index":42}],15:[function(require,module,exports){
+},{"../core/core.defaults":21,"../elements/index":36,"../helpers/index":41}],14:[function(require,module,exports){
 'use strict';
 
 var defaults = require('../core/core.defaults');
@@ -1634,7 +1537,7 @@ module.exports = function(Chart) {
 	});
 };
 
-},{"../core/core.defaults":22,"../elements/index":37,"../helpers/index":42}],16:[function(require,module,exports){
+},{"../core/core.defaults":21,"../elements/index":36,"../helpers/index":41}],15:[function(require,module,exports){
 'use strict';
 
 var defaults = require('../core/core.defaults');
@@ -1858,7 +1761,7 @@ module.exports = function(Chart) {
 	});
 };
 
-},{"../core/core.defaults":22,"../elements/index":37,"../helpers/index":42}],17:[function(require,module,exports){
+},{"../core/core.defaults":21,"../elements/index":36,"../helpers/index":41}],16:[function(require,module,exports){
 'use strict';
 
 var defaults = require('../core/core.defaults');
@@ -2028,7 +1931,7 @@ module.exports = function(Chart) {
 	});
 };
 
-},{"../core/core.defaults":22,"../elements/index":37,"../helpers/index":42}],18:[function(require,module,exports){
+},{"../core/core.defaults":21,"../elements/index":36,"../helpers/index":41}],17:[function(require,module,exports){
 'use strict';
 
 var defaults = require('../core/core.defaults');
@@ -2072,7 +1975,7 @@ module.exports = function(Chart) {
 
 };
 
-},{"../core/core.defaults":22}],19:[function(require,module,exports){
+},{"../core/core.defaults":21}],18:[function(require,module,exports){
 /* global window: false */
 'use strict';
 
@@ -2246,7 +2149,7 @@ module.exports = function(Chart) {
 
 };
 
-},{"../helpers/index":42,"./core.defaults":22,"./core.element":23}],20:[function(require,module,exports){
+},{"../helpers/index":41,"./core.defaults":21,"./core.element":22}],19:[function(require,module,exports){
 'use strict';
 
 var defaults = require('./core.defaults');
@@ -3152,7 +3055,7 @@ module.exports = function(Chart) {
 	Chart.Controller = Chart;
 };
 
-},{"../helpers/index":42,"../platforms/platform":45,"./core.defaults":22,"./core.interaction":25}],21:[function(require,module,exports){
+},{"../helpers/index":41,"../platforms/platform":44,"./core.defaults":21,"./core.interaction":24}],20:[function(require,module,exports){
 'use strict';
 
 var helpers = require('../helpers/index');
@@ -3484,7 +3387,7 @@ module.exports = function(Chart) {
 	Chart.DatasetController.extend = helpers.inherits;
 };
 
-},{"../helpers/index":42}],22:[function(require,module,exports){
+},{"../helpers/index":41}],21:[function(require,module,exports){
 'use strict';
 
 var helpers = require('../helpers/index');
@@ -3498,7 +3401,7 @@ module.exports = {
 	}
 };
 
-},{"../helpers/index":42}],23:[function(require,module,exports){
+},{"../helpers/index":41}],22:[function(require,module,exports){
 'use strict';
 
 var color = require('chartjs-color');
@@ -3615,7 +3518,7 @@ Element.extend = helpers.inherits;
 
 module.exports = Element;
 
-},{"../helpers/index":42,"chartjs-color":56}],24:[function(require,module,exports){
+},{"../helpers/index":41,"chartjs-color":55}],23:[function(require,module,exports){
 /* global window: false */
 /* global document: false */
 'use strict';
@@ -4220,7 +4123,7 @@ module.exports = function(Chart) {
 	};
 };
 
-},{"../helpers/index":42,"./core.defaults":22,"chartjs-color":56}],25:[function(require,module,exports){
+},{"../helpers/index":41,"./core.defaults":21,"chartjs-color":55}],24:[function(require,module,exports){
 'use strict';
 
 var helpers = require('../helpers/index');
@@ -4552,7 +4455,7 @@ module.exports = {
 	}
 };
 
-},{"../helpers/index":42}],26:[function(require,module,exports){
+},{"../helpers/index":41}],25:[function(require,module,exports){
 'use strict';
 
 var defaults = require('./core.defaults');
@@ -4603,7 +4506,7 @@ module.exports = function() {
 	return Chart;
 };
 
-},{"./core.defaults":22}],27:[function(require,module,exports){
+},{"./core.defaults":21}],26:[function(require,module,exports){
 'use strict';
 
 var helpers = require('../helpers/index');
@@ -5027,7 +4930,7 @@ module.exports = function(Chart) {
 	};
 };
 
-},{"../helpers/index":42}],28:[function(require,module,exports){
+},{"../helpers/index":41}],27:[function(require,module,exports){
 'use strict';
 
 var defaults = require('./core.defaults');
@@ -5424,7 +5327,7 @@ module.exports = function(Chart) {
 	Chart.PluginBase = Element.extend({});
 };
 
-},{"../helpers/index":42,"./core.defaults":22,"./core.element":23}],29:[function(require,module,exports){
+},{"../helpers/index":41,"./core.defaults":21,"./core.element":22}],28:[function(require,module,exports){
 'use strict';
 
 var defaults = require('./core.defaults');
@@ -6357,7 +6260,7 @@ module.exports = function(Chart) {
 	});
 };
 
-},{"../helpers/index":42,"./core.defaults":22,"./core.element":23,"./core.ticks":31}],30:[function(require,module,exports){
+},{"../helpers/index":41,"./core.defaults":21,"./core.element":22,"./core.ticks":30}],29:[function(require,module,exports){
 'use strict';
 
 var defaults = require('./core.defaults');
@@ -6404,7 +6307,7 @@ module.exports = function(Chart) {
 	};
 };
 
-},{"../helpers/index":42,"./core.defaults":22}],31:[function(require,module,exports){
+},{"../helpers/index":41,"./core.defaults":21}],30:[function(require,module,exports){
 'use strict';
 
 var helpers = require('../helpers/index');
@@ -6610,7 +6513,7 @@ module.exports = {
 	}
 };
 
-},{"../helpers/index":42}],32:[function(require,module,exports){
+},{"../helpers/index":41}],31:[function(require,module,exports){
 'use strict';
 
 var defaults = require('./core.defaults');
@@ -7560,7 +7463,7 @@ module.exports = function(Chart) {
 	};
 };
 
-},{"../helpers/index":42,"./core.defaults":22,"./core.element":23}],33:[function(require,module,exports){
+},{"../helpers/index":41,"./core.defaults":21,"./core.element":22}],32:[function(require,module,exports){
 'use strict';
 
 var defaults = require('../core/core.defaults');
@@ -7669,7 +7572,7 @@ module.exports = Element.extend({
 	}
 });
 
-},{"../core/core.defaults":22,"../core/core.element":23,"../helpers/index":42}],34:[function(require,module,exports){
+},{"../core/core.defaults":21,"../core/core.element":22,"../helpers/index":41}],33:[function(require,module,exports){
 'use strict';
 
 var defaults = require('../core/core.defaults');
@@ -7762,7 +7665,7 @@ module.exports = Element.extend({
 	}
 });
 
-},{"../core/core.defaults":22,"../core/core.element":23,"../helpers/index":42}],35:[function(require,module,exports){
+},{"../core/core.defaults":21,"../core/core.element":22,"../helpers/index":41}],34:[function(require,module,exports){
 'use strict';
 
 var defaults = require('../core/core.defaults');
@@ -7870,7 +7773,7 @@ module.exports = Element.extend({
 	}
 });
 
-},{"../core/core.defaults":22,"../core/core.element":23,"../helpers/index":42}],36:[function(require,module,exports){
+},{"../core/core.defaults":21,"../core/core.element":22,"../helpers/index":41}],35:[function(require,module,exports){
 'use strict';
 
 var defaults = require('../core/core.defaults');
@@ -8089,7 +7992,7 @@ module.exports = Element.extend({
 	}
 });
 
-},{"../core/core.defaults":22,"../core/core.element":23}],37:[function(require,module,exports){
+},{"../core/core.defaults":21,"../core/core.element":22}],36:[function(require,module,exports){
 'use strict';
 
 module.exports = {};
@@ -8098,7 +8001,7 @@ module.exports.Line = require('./element.line');
 module.exports.Point = require('./element.point');
 module.exports.Rectangle = require('./element.rectangle');
 
-},{"./element.arc":33,"./element.line":34,"./element.point":35,"./element.rectangle":36}],38:[function(require,module,exports){
+},{"./element.arc":32,"./element.line":33,"./element.point":34,"./element.rectangle":35}],37:[function(require,module,exports){
 'use strict';
 
 var helpers = require('./helpers.core');
@@ -8314,7 +8217,7 @@ helpers.drawRoundedRectangle = function(ctx) {
 	ctx.closePath();
 };
 
-},{"./helpers.core":39}],39:[function(require,module,exports){
+},{"./helpers.core":38}],38:[function(require,module,exports){
 'use strict';
 
 /**
@@ -8655,7 +8558,7 @@ helpers.getValueOrDefault = helpers.valueOrDefault;
  */
 helpers.getValueAtIndexOrDefault = helpers.valueAtIndexOrDefault;
 
-},{}],40:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 'use strict';
 
 var helpers = require('./helpers.core');
@@ -8907,7 +8810,7 @@ module.exports = {
  */
 helpers.easingEffects = effects;
 
-},{"./helpers.core":39}],41:[function(require,module,exports){
+},{"./helpers.core":38}],40:[function(require,module,exports){
 'use strict';
 
 var helpers = require('./helpers.core');
@@ -9005,7 +8908,7 @@ module.exports = {
 	}
 };
 
-},{"./helpers.core":39}],42:[function(require,module,exports){
+},{"./helpers.core":38}],41:[function(require,module,exports){
 'use strict';
 
 module.exports = require('./helpers.core');
@@ -9013,7 +8916,7 @@ module.exports.easing = require('./helpers.easing');
 module.exports.canvas = require('./helpers.canvas');
 module.exports.options = require('./helpers.options');
 
-},{"./helpers.canvas":38,"./helpers.core":39,"./helpers.easing":40,"./helpers.options":41}],43:[function(require,module,exports){
+},{"./helpers.canvas":37,"./helpers.core":38,"./helpers.easing":39,"./helpers.options":40}],42:[function(require,module,exports){
 /**
  * Platform fallback implementation (minimal).
  * @see https://github.com/chartjs/Chart.js/pull/4591#issuecomment-319575939
@@ -9030,7 +8933,7 @@ module.exports = {
 	}
 };
 
-},{}],44:[function(require,module,exports){
+},{}],43:[function(require,module,exports){
 /**
  * Chart.Platform implementation for targeting a web browser
  */
@@ -9489,7 +9392,7 @@ helpers.addEvent = addEventListener;
  */
 helpers.removeEvent = removeEventListener;
 
-},{"../helpers/index":42}],45:[function(require,module,exports){
+},{"../helpers/index":41}],44:[function(require,module,exports){
 'use strict';
 
 var helpers = require('../helpers/index');
@@ -9565,7 +9468,7 @@ module.exports = helpers.extend({
  * @prop {Number} y - The mouse y position, relative to the canvas (null for incompatible events)
  */
 
-},{"../helpers/index":42,"./platform.basic":43,"./platform.dom":44}],46:[function(require,module,exports){
+},{"../helpers/index":41,"./platform.basic":42,"./platform.dom":43}],45:[function(require,module,exports){
 /**
  * Plugin based on discussion from the following Chart.js issues:
  * @see https://github.com/chartjs/Chart.js/issues/2380#issuecomment-279961569
@@ -9888,7 +9791,7 @@ module.exports = function() {
 	};
 };
 
-},{"../core/core.defaults":22,"../elements/index":37,"../helpers/index":42}],47:[function(require,module,exports){
+},{"../core/core.defaults":21,"../elements/index":36,"../helpers/index":41}],46:[function(require,module,exports){
 'use strict';
 
 var defaults = require('../core/core.defaults');
@@ -10457,7 +10360,7 @@ module.exports = function(Chart) {
 	};
 };
 
-},{"../core/core.defaults":22,"../core/core.element":23,"../helpers/index":42}],48:[function(require,module,exports){
+},{"../core/core.defaults":21,"../core/core.element":22,"../helpers/index":41}],47:[function(require,module,exports){
 'use strict';
 
 var defaults = require('../core/core.defaults');
@@ -10702,7 +10605,7 @@ module.exports = function(Chart) {
 	};
 };
 
-},{"../core/core.defaults":22,"../core/core.element":23,"../helpers/index":42}],49:[function(require,module,exports){
+},{"../core/core.defaults":21,"../core/core.element":22,"../helpers/index":41}],48:[function(require,module,exports){
 'use strict';
 
 module.exports = function(Chart) {
@@ -10837,7 +10740,7 @@ module.exports = function(Chart) {
 
 };
 
-},{}],50:[function(require,module,exports){
+},{}],49:[function(require,module,exports){
 'use strict';
 
 var defaults = require('../core/core.defaults');
@@ -11031,7 +10934,7 @@ module.exports = function(Chart) {
 
 };
 
-},{"../core/core.defaults":22,"../core/core.ticks":31,"../helpers/index":42}],51:[function(require,module,exports){
+},{"../core/core.defaults":21,"../core/core.ticks":30,"../helpers/index":41}],50:[function(require,module,exports){
 'use strict';
 
 var helpers = require('../helpers/index');
@@ -11165,7 +11068,7 @@ module.exports = function(Chart) {
 	});
 };
 
-},{"../core/core.ticks":31,"../helpers/index":42}],52:[function(require,module,exports){
+},{"../core/core.ticks":30,"../helpers/index":41}],51:[function(require,module,exports){
 'use strict';
 
 var helpers = require('../helpers/index');
@@ -11411,7 +11314,7 @@ module.exports = function(Chart) {
 
 };
 
-},{"../core/core.ticks":31,"../helpers/index":42}],53:[function(require,module,exports){
+},{"../core/core.ticks":30,"../helpers/index":41}],52:[function(require,module,exports){
 'use strict';
 
 var defaults = require('../core/core.defaults');
@@ -11943,7 +11846,7 @@ module.exports = function(Chart) {
 
 };
 
-},{"../core/core.defaults":22,"../core/core.ticks":31,"../helpers/index":42}],54:[function(require,module,exports){
+},{"../core/core.defaults":21,"../core/core.ticks":30,"../helpers/index":41}],53:[function(require,module,exports){
 /* global window: false */
 'use strict';
 
@@ -12701,7 +12604,7 @@ module.exports = function(Chart) {
 	Chart.scaleService.registerScaleType('time', TimeScale, defaultConfig);
 };
 
-},{"../core/core.defaults":22,"../helpers/index":42,"moment":76}],55:[function(require,module,exports){
+},{"../core/core.defaults":21,"../helpers/index":41,"moment":75}],54:[function(require,module,exports){
 /* MIT license */
 var colorNames = require('color-name');
 
@@ -12924,7 +12827,7 @@ for (var name in colorNames) {
    reverseNames[colorNames[name]] = name;
 }
 
-},{"color-name":59}],56:[function(require,module,exports){
+},{"color-name":58}],55:[function(require,module,exports){
 /* MIT license */
 var convert = require('color-convert');
 var string = require('chartjs-color-string');
@@ -13411,7 +13314,7 @@ if (typeof window !== 'undefined') {
 
 module.exports = Color;
 
-},{"chartjs-color-string":55,"color-convert":58}],57:[function(require,module,exports){
+},{"chartjs-color-string":54,"color-convert":57}],56:[function(require,module,exports){
 /* MIT license */
 
 module.exports = {
@@ -14111,7 +14014,7 @@ for (var key in cssKeywords) {
   reverseKeywords[JSON.stringify(cssKeywords[key])] = key;
 }
 
-},{}],58:[function(require,module,exports){
+},{}],57:[function(require,module,exports){
 var conversions = require("./conversions");
 
 var convert = function() {
@@ -14204,7 +14107,7 @@ Converter.prototype.getValues = function(space) {
 });
 
 module.exports = convert;
-},{"./conversions":57}],59:[function(require,module,exports){
+},{"./conversions":56}],58:[function(require,module,exports){
 'use strict'
 
 module.exports = {
@@ -14358,7 +14261,7 @@ module.exports = {
 	"yellowgreen": [154, 205, 50]
 };
 
-},{}],60:[function(require,module,exports){
+},{}],59:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -14435,7 +14338,7 @@ var EventListener = {
 
 module.exports = EventListener;
 }).call(this,require('_process'))
-},{"./emptyFunction":65,"_process":78}],61:[function(require,module,exports){
+},{"./emptyFunction":64,"_process":77}],60:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -14469,7 +14372,7 @@ var ExecutionEnvironment = {
 };
 
 module.exports = ExecutionEnvironment;
-},{}],62:[function(require,module,exports){
+},{}],61:[function(require,module,exports){
 "use strict";
 
 /**
@@ -14499,7 +14402,7 @@ function camelize(string) {
 }
 
 module.exports = camelize;
-},{}],63:[function(require,module,exports){
+},{}],62:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -14537,7 +14440,7 @@ function camelizeStyleName(string) {
 }
 
 module.exports = camelizeStyleName;
-},{"./camelize":62}],64:[function(require,module,exports){
+},{"./camelize":61}],63:[function(require,module,exports){
 'use strict';
 
 /**
@@ -14575,7 +14478,7 @@ function containsNode(outerNode, innerNode) {
 }
 
 module.exports = containsNode;
-},{"./isTextNode":73}],65:[function(require,module,exports){
+},{"./isTextNode":72}],64:[function(require,module,exports){
 "use strict";
 
 /**
@@ -14612,7 +14515,7 @@ emptyFunction.thatReturnsArgument = function (arg) {
 };
 
 module.exports = emptyFunction;
-},{}],66:[function(require,module,exports){
+},{}],65:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -14632,7 +14535,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = emptyObject;
 }).call(this,require('_process'))
-},{"_process":78}],67:[function(require,module,exports){
+},{"_process":77}],66:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -14657,7 +14560,7 @@ function focusNode(node) {
 }
 
 module.exports = focusNode;
-},{}],68:[function(require,module,exports){
+},{}],67:[function(require,module,exports){
 'use strict';
 
 /**
@@ -14694,7 +14597,7 @@ function getActiveElement(doc) /*?DOMElement*/{
 }
 
 module.exports = getActiveElement;
-},{}],69:[function(require,module,exports){
+},{}],68:[function(require,module,exports){
 'use strict';
 
 /**
@@ -14725,7 +14628,7 @@ function hyphenate(string) {
 }
 
 module.exports = hyphenate;
-},{}],70:[function(require,module,exports){
+},{}],69:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -14762,7 +14665,7 @@ function hyphenateStyleName(string) {
 }
 
 module.exports = hyphenateStyleName;
-},{"./hyphenate":69}],71:[function(require,module,exports){
+},{"./hyphenate":68}],70:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -14818,7 +14721,7 @@ function invariant(condition, format, a, b, c, d, e, f) {
 
 module.exports = invariant;
 }).call(this,require('_process'))
-},{"_process":78}],72:[function(require,module,exports){
+},{"_process":77}],71:[function(require,module,exports){
 'use strict';
 
 /**
@@ -14841,7 +14744,7 @@ function isNode(object) {
 }
 
 module.exports = isNode;
-},{}],73:[function(require,module,exports){
+},{}],72:[function(require,module,exports){
 'use strict';
 
 /**
@@ -14864,7 +14767,7 @@ function isTextNode(object) {
 }
 
 module.exports = isTextNode;
-},{"./isNode":72}],74:[function(require,module,exports){
+},{"./isNode":71}],73:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -14930,7 +14833,7 @@ function shallowEqual(objA, objB) {
 }
 
 module.exports = shallowEqual;
-},{}],75:[function(require,module,exports){
+},{}],74:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
@@ -14995,7 +14898,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = warning;
 }).call(this,require('_process'))
-},{"./emptyFunction":65,"_process":78}],76:[function(require,module,exports){
+},{"./emptyFunction":64,"_process":77}],75:[function(require,module,exports){
 //! moment.js
 //! version : 2.18.1
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
@@ -19460,7 +19363,7 @@ return hooks;
 
 })));
 
-},{}],77:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 /*
 object-assign
 (c) Sindre Sorhus
@@ -19552,7 +19455,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 	return to;
 };
 
-},{}],78:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -19738,7 +19641,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],79:[function(require,module,exports){
+},{}],78:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -19801,7 +19704,7 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
 module.exports = checkPropTypes;
 
 }).call(this,require('_process'))
-},{"./lib/ReactPropTypesSecret":80,"_process":78,"fbjs/lib/invariant":71,"fbjs/lib/warning":75}],80:[function(require,module,exports){
+},{"./lib/ReactPropTypesSecret":79,"_process":77,"fbjs/lib/invariant":70,"fbjs/lib/warning":74}],79:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -19815,7 +19718,7 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 module.exports = ReactPropTypesSecret;
 
-},{}],81:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 (function (process){
 /** @license React v16.2.0
  * react-dom.development.js
@@ -35213,7 +35116,7 @@ module.exports = reactDom;
 }
 
 }).call(this,require('_process'))
-},{"_process":78,"fbjs/lib/EventListener":60,"fbjs/lib/ExecutionEnvironment":61,"fbjs/lib/camelizeStyleName":63,"fbjs/lib/containsNode":64,"fbjs/lib/emptyFunction":65,"fbjs/lib/emptyObject":66,"fbjs/lib/focusNode":67,"fbjs/lib/getActiveElement":68,"fbjs/lib/hyphenateStyleName":70,"fbjs/lib/invariant":71,"fbjs/lib/shallowEqual":74,"fbjs/lib/warning":75,"object-assign":77,"prop-types/checkPropTypes":79,"react":86}],82:[function(require,module,exports){
+},{"_process":77,"fbjs/lib/EventListener":59,"fbjs/lib/ExecutionEnvironment":60,"fbjs/lib/camelizeStyleName":62,"fbjs/lib/containsNode":63,"fbjs/lib/emptyFunction":64,"fbjs/lib/emptyObject":65,"fbjs/lib/focusNode":66,"fbjs/lib/getActiveElement":67,"fbjs/lib/hyphenateStyleName":69,"fbjs/lib/invariant":70,"fbjs/lib/shallowEqual":73,"fbjs/lib/warning":74,"object-assign":76,"prop-types/checkPropTypes":78,"react":85}],81:[function(require,module,exports){
 /** @license React v16.2.0
  * react-dom.production.min.js
  *
@@ -35444,7 +35347,7 @@ var Sg={createPortal:Qg,findDOMNode:function(a){if(null==a)return null;if(1===a.
 E("40");return a._reactRootContainer?(Z.unbatchedUpdates(function(){Pg(null,null,a,!1,function(){a._reactRootContainer=null})}),!0):!1},unstable_createPortal:Qg,unstable_batchedUpdates:tc,unstable_deferredUpdates:Z.deferredUpdates,flushSync:Z.flushSync,__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED:{EventPluginHub:mb,EventPluginRegistry:Va,EventPropagators:Cb,ReactControlledComponent:qc,ReactDOMComponentTree:sb,ReactDOMEventListener:xd}};
 Z.injectIntoDevTools({findFiberByHostInstance:pb,bundleType:0,version:"16.2.0",rendererPackageName:"react-dom"});var Tg=Object.freeze({default:Sg}),Ug=Tg&&Sg||Tg;module.exports=Ug["default"]?Ug["default"]:Ug;
 
-},{"fbjs/lib/EventListener":60,"fbjs/lib/ExecutionEnvironment":61,"fbjs/lib/containsNode":64,"fbjs/lib/emptyFunction":65,"fbjs/lib/emptyObject":66,"fbjs/lib/focusNode":67,"fbjs/lib/getActiveElement":68,"fbjs/lib/shallowEqual":74,"object-assign":77,"react":86}],83:[function(require,module,exports){
+},{"fbjs/lib/EventListener":59,"fbjs/lib/ExecutionEnvironment":60,"fbjs/lib/containsNode":63,"fbjs/lib/emptyFunction":64,"fbjs/lib/emptyObject":65,"fbjs/lib/focusNode":66,"fbjs/lib/getActiveElement":67,"fbjs/lib/shallowEqual":73,"object-assign":76,"react":85}],82:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -35486,7 +35389,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./cjs/react-dom.development.js":81,"./cjs/react-dom.production.min.js":82,"_process":78}],84:[function(require,module,exports){
+},{"./cjs/react-dom.development.js":80,"./cjs/react-dom.production.min.js":81,"_process":77}],83:[function(require,module,exports){
 (function (process){
 /** @license React v16.2.0
  * react.development.js
@@ -36847,7 +36750,7 @@ module.exports = react;
 }
 
 }).call(this,require('_process'))
-},{"_process":78,"fbjs/lib/emptyFunction":65,"fbjs/lib/emptyObject":66,"fbjs/lib/invariant":71,"fbjs/lib/warning":75,"object-assign":77,"prop-types/checkPropTypes":79}],85:[function(require,module,exports){
+},{"_process":77,"fbjs/lib/emptyFunction":64,"fbjs/lib/emptyObject":65,"fbjs/lib/invariant":70,"fbjs/lib/warning":74,"object-assign":76,"prop-types/checkPropTypes":78}],84:[function(require,module,exports){
 /** @license React v16.2.0
  * react.production.min.js
  *
@@ -36870,7 +36773,7 @@ var U={Children:{map:function(a,b,e){if(null==a)return a;var c=[];T(a,c,null,b,e
 d=a.key,g=a.ref,k=a._owner;if(null!=b){void 0!==b.ref&&(g=b.ref,k=G.current);void 0!==b.key&&(d=""+b.key);if(a.type&&a.type.defaultProps)var f=a.type.defaultProps;for(h in b)H.call(b,h)&&!I.hasOwnProperty(h)&&(c[h]=void 0===b[h]&&void 0!==f?f[h]:b[h])}var h=arguments.length-2;if(1===h)c.children=e;else if(1<h){f=Array(h);for(var l=0;l<h;l++)f[l]=arguments[l+2];c.children=f}return{$$typeof:r,type:a.type,key:d,ref:g,props:c,_owner:k}},createFactory:function(a){var b=J.bind(null,a);b.type=a;return b},
 isValidElement:K,version:"16.2.0",__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED:{ReactCurrentOwner:G,assign:m}},V=Object.freeze({default:U}),W=V&&U||V;module.exports=W["default"]?W["default"]:W;
 
-},{"fbjs/lib/emptyFunction":65,"fbjs/lib/emptyObject":66,"object-assign":77}],86:[function(require,module,exports){
+},{"fbjs/lib/emptyFunction":64,"fbjs/lib/emptyObject":65,"object-assign":76}],85:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -36881,4 +36784,4 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./cjs/react.development.js":84,"./cjs/react.production.min.js":85,"_process":78}]},{},[3]);
+},{"./cjs/react.development.js":83,"./cjs/react.production.min.js":84,"_process":77}]},{},[2]);
