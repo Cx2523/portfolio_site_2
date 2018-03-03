@@ -2,6 +2,9 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { PolarChart1js, PolarChart2js } from './ChartJsPolarCharts';
+import { animationSequencer } from './animationSequencer';
+
+
 
 (function ($) {
   "use strict"; // Start of use strict
@@ -66,8 +69,12 @@ var onMapClickHandler = function onMapClickHandler(event) {
   that.on('mouseleave', onMapMouseleaveHandler);
 };
 
-var ctx1 = document.getElementById("myChart");
-PolarChart1js(ctx1);
-console.log(PolarChart2js);
-var ctx2 = document.getElementById("myChart2");
-PolarChart2js(ctx2);
+var animationLetters = $("#animateHeader")[0].children;
+animationSequencer(animationLetters, "flipInY", 2000)
+// var ctx1 = document.getElementById("myChart");
+// PolarChart1js(ctx1);
+// console.log(PolarChart2js);
+// var ctx2 = document.getElementById("myChart2");
+// PolarChart2js(ctx2);
+
+

@@ -109,88 +109,7 @@ h6 {
   }
 }
 
-.dropInLetter div {
-  font-style: italic;
-  display: inline-block;
-  font-weight: normal;
-}
 
-.one {
-  -webkit-animation-delay: 0;
-}
-
-.two {
-  -webkit-animation-delay: 50ms;
-}
-
-.three {
-  -webkit-animation-delay: 100ms;
-}
-
-.four {
-  -webkit-animation-delay: 150ms;
-}
-
-.five {
-  -webkit-animation-delay: 200ms;
-}
-
-.six {
-  -webkit-animation-delay: 250ms;
-}
-
-.seven {
-  -webkit-animation-delay: 300ms;
-}
-
-.eight {
-  -webkit-animation-delay: 350ms;
-}
-
-.nine {
-  -webkit-animation-delay: 400ms;
-}
-
-.ten {
-  -webkit-animation-delay: 450ms;
-}
-
-.eleven {
-  -webkit-animation-delay: 500ms;
-}
-
-
-.twelve {
-  -webkit-animation-delay: 550ms;
-}
-
-.thirteen {
-  -webkit-animation-delay: 600ms;
-}
-
-.fourteen {
-  -webkit-animation-delay: 650ms;
-}
-
-.fifteen {
-  -webkit-animation-delay: 700ms;
-}
-
-.sixteen {
-  -webkit-animation-delay: 750ms;
-}
-
-.seventeen {
-  -webkit-animation-delay: 800ms;
-}
-
-.eightteen {
-  -webkit-animation-delay: 850ms;
-}
-
-.nineteen {
-  -webkit-animation-delay: 900ms;
-}
 
 /* Side Menu */
 #sidebar-wrapper {
@@ -450,4 +369,11 @@ svg{
   width: 100%;
   height:100%;
   border:1px solid black;
+}
+
+#animateHeader div{ 
+  font-style: italic;
+  visibility: hidden;
+  font-weight: normal;
+  display: inline-block;
 }
