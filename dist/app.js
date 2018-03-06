@@ -150,11 +150,11 @@ var onMapClickHandler = function onMapClickHandler(event) {
 
 var animationLetters = $("#animateHeader")[0].children;
 (0, _animationSequencer.animationSequencer)(animationLetters, "flipInY", 2000);
-// var ctx1 = document.getElementById("myChart");
-// PolarChart1js(ctx1);
-// console.log(PolarChart2js);
-// var ctx2 = document.getElementById("myChart2");
-// PolarChart2js(ctx2);
+var ctx1 = document.getElementById("myChart");
+(0, _ChartJsPolarCharts.PolarChart1js)(ctx1);
+console.log(_ChartJsPolarCharts.PolarChart2js);
+var ctx2 = document.getElementById("myChart2");
+(0, _ChartJsPolarCharts.PolarChart2js)(ctx2);
 
 },{"./ChartJsPolarCharts":1,"./animationSequencer":2,"react":86,"react-dom":83}],4:[function(require,module,exports){
 /**
