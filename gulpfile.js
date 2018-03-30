@@ -93,7 +93,7 @@ gulp.task('css', ['css:compile', 'css:minify']);
 
 // babel transpile
 gulp.task('js:babel', function(){
-  var bundler = browserify('js/stylish-portfolio.js');
+  var bundler = browserify('js/index.js');
 
   return bundler
     .transform('babelify' , {
