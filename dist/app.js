@@ -75,15 +75,11 @@ function animationSequencer(letters, animation, totalMs) {
 
 var _ChartJsPolarCharts = require('./ChartJsPolarCharts');
 
-var _ChartJsPolarCharts2 = _interopRequireDefault(_ChartJsPolarCharts);
-
 var _animationSequencer = require('./animationSequencer');
 
-var _animationSequencer2 = _interopRequireDefault(_animationSequencer);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-(0, _animationSequencer2.default)('#myChart');
+(0, _animationSequencer.animationSequencer)(document.getElementById("animateHeader").children, "flipInX", 2000);
+(0, _ChartJsPolarCharts.PolarChart1js)("myChart");
+(0, _ChartJsPolarCharts.PolarChart2js)("myChart2");
 
 },{"./ChartJsPolarCharts":1,"./animationSequencer":2}],4:[function(require,module,exports){
 /**
